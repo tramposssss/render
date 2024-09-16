@@ -6,21 +6,6 @@ const { MongoClient } = require('mongodb');
 
 // Configuração do MongoDB
 const uri = 'mongodb+srv://jamefagregacoeseentregas:u3bFFsxmwLdwOuxo@infosjamef.p0kt5.mongodb.net/?retryWrites=true&w=majority&appName=InfosJamef'; // Substitua pela sua URI do MongoDB
-const client = new MongoClient(uri);
-const dbName = 'infosjamef';
-let db;
-
-async function connectToDatabase() {
-  try {
-    await client.connect();
-    console.log('Conectado ao MongoDB');
-    db = client.db(dbName);
-  } catch (error) {
-    console.error('Erro ao conectar ao MongoDB:', error);
-  }
-}
-
-connectToDatabase();
 
 const app = express();
 const port = process.env.PORT || 3005; // Usa a variável de ambiente PORT, ou 3005 por padrão
@@ -49,6 +34,20 @@ app.use(express.json());
 
 // Serve arquivos estáticos da pasta 'public'
 app.use(express.static(path.join(__dirname, '../public')));
+
+// Função auxiliar para conectar ao banco de dados e realizar uma operação
+async function withDbConnection(operation) {
+  const client = new MongoClient(uri);
+  try {
+    await client.connect();
+    const db = client.db('infosjamef');
+    await operation(db);
+  } catch (error) {
+    console.error('Erro ao conectar ou operar com o MongoDB:', error);
+  } finally {
+    await client.close();
+  }
+}
 
 // Middleware para validar e sanitizar dados do formulário de contato
 const contactFormValidation = [
@@ -98,7 +97,7 @@ app.post('/processa_telefone', (req, res) => {
 
 // Rotas API
 app.post('/submit_contact_form', contactFormValidation, async (req, res) => {
-  console.log('Requisição recebida em /api/submit_contact_form');
+  console.log('Requisição recebida em /submit_contact_form');
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -110,17 +109,19 @@ app.post('/submit_contact_form', contactFormValidation, async (req, res) => {
   console.log('Dados recebidos:', req.body);
 
   if (name && email && phone && message) {
-    const collection = db.collection('contact_forms');
-    const content = { name, email, phone, message, timestamp: new Date() };
+    await withDbConnection(async (db) => {
+      const collection = db.collection('contact_forms');
+      const content = { name, email, phone, message, timestamp: new Date() };
 
-    try {
-      await collection.insertOne(content);
-      console.log('Mensagem gravada com sucesso no MongoDB.');
-      res.send('Sua mensagem foi enviada com sucesso, logo entraremos em contato!');
-    } catch (err) {
-      console.error('Erro ao gravar no MongoDB:', err);
-      res.status(500).send('Erro ao gravar sua mensagem. Tente novamente mais tarde.');
-    }
+      try {
+        await collection.insertOne(content);
+        console.log('Mensagem gravada com sucesso no MongoDB.');
+        res.send('Sua mensagem foi enviada com sucesso, logo entraremos em contato!');
+      } catch (err) {
+        console.error('Erro ao gravar no MongoDB:', err);
+        res.status(500).send('Erro ao gravar sua mensagem. Tente novamente mais tarde.');
+      }
+    });
   } else {
     console.warn('Dados incompletos. Todos os campos são obrigatórios.');
     res.status(400).send('Todos os campos são obrigatórios.');
@@ -128,7 +129,7 @@ app.post('/submit_contact_form', contactFormValidation, async (req, res) => {
 });
 
 app.post('/submit_form', async (req, res) => {
-  console.log('Requisição recebida em /api/submit_form');
+  console.log('Requisição recebida em /submit_form');
 
   const { 
       nome, data_nascimento, cpf, contrato_social, telefone1, telefone2,
@@ -161,15 +162,17 @@ app.post('/submit_form', async (req, res) => {
 
   console.log('Preparando para gravar no MongoDB');
 
-  try {
-    const collection = db.collection('form_data');
-    await collection.insertOne(content);
-    console.log('Dados gravados com sucesso no MongoDB.');
-    res.send('Formulário enviado com sucesso.');
-  } catch (err) {
-    console.error('Erro ao gravar no MongoDB:', err);
-    res.status(500).send('Erro ao gravar os dados. Tente novamente mais tarde.');
-  }
+  await withDbConnection(async (db) => {
+    try {
+      const collection = db.collection('form_data');
+      await collection.insertOne(content);
+      console.log('Dados gravados com sucesso no MongoDB.');
+      res.send('Formulário enviado com sucesso.');
+    } catch (err) {
+      console.error('Erro ao gravar no MongoDB:', err);
+      res.status(500).send('Erro ao gravar os dados. Tente novamente mais tarde.');
+    }
+  });
 });
 
 // Middleware para tratamento de rotas não encontradas
