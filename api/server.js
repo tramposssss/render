@@ -5,11 +5,12 @@ const { check, validationResult } = require('express-validator');
 const { MongoClient } = require('mongodb');
 
 // Configuração do MongoDB
-const uri = 'mongodb+srv://jamefagregacoeseentregas:u3bFFsxmwLdwOuxo@infosjamef.p0kt5.mongodb.net/?retryWrites=true&w=majority&appName=InfosJamef'; // Substitua pela sua URI do MongoDB
+const uri = 'mongodb+srv://jamefagregacoeseentregas:u3bFFsxmwLdwOuxo@infosjamef.p0kt5.mongodb.net/?retryWrites=true&w=majority&appName=InfosJamef';
 const client = new MongoClient(uri);
-const dbName = 'InfosJamef';
+const dbName = 'infosjamef';
 let db;
 
+// Função para conectar ao MongoDB
 async function connectToDatabase() {
   try {
     await client.connect();
@@ -20,6 +21,7 @@ async function connectToDatabase() {
   }
 }
 
+// Conectar ao MongoDB assim que o servidor iniciar
 connectToDatabase();
 
 const app = express();
@@ -29,16 +31,16 @@ const port = process.env.PORT || 3005; // Usa a variável de ambiente PORT, ou 3
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
-      defaultSrc: ["'self'"],  // Fonte padrão permitida
-      scriptSrc: ["'self'", "'unsafe-inline'", "https://code.jquery.com", "https://cdn.jsdelivr.net"], // Scripts permitidos
-      styleSrc: ["'self'", "'unsafe-inline'", "https://stackpath.bootstrapcdn.com", "https://cdn.jsdelivr.net"], // Estilos permitidos
-      imgSrc: ["'self'", "data:", "https://assets.zyrosite.com", "https://www.jamef.com.br"],  // Imagens permitidas
-      fontSrc: ["'self'", "https://fonts.gstatic.com", "https://cdn.jsdelivr.net"], // Fontes permitidas
-      connectSrc: ["'self'"],  // Conexões permitidas
-      frameSrc: ["'self'"],  // Frames permitidos
-      objectSrc: ["'none'"],  // Objetos não permitidos
-      baseUri: ["'self'"],  // Base URI permitida
-      formAction: ["'self'"]  // Ação do formulário permitida
+      defaultSrc: ["'self'"], 
+      scriptSrc: ["'self'", "'unsafe-inline'", "https://code.jquery.com", "https://cdn.jsdelivr.net"], 
+      styleSrc: ["'self'", "'unsafe-inline'", "https://stackpath.bootstrapcdn.com", "https://cdn.jsdelivr.net"], 
+      imgSrc: ["'self'", "data:", "https://assets.zyrosite.com", "https://www.jamef.com.br"],  
+      fontSrc: ["'self'", "https://fonts.gstatic.com", "https://cdn.jsdelivr.net"], 
+      connectSrc: ["'self'"],  
+      frameSrc: ["'self'"],  
+      objectSrc: ["'none'"],  
+      baseUri: ["'self'"],  
+      formAction: ["'self'"]  
     }
   }
 }));
@@ -57,6 +59,14 @@ const contactFormValidation = [
   check('phone').notEmpty().withMessage('Telefone é obrigatório'),
   check('message').notEmpty().withMessage('Mensagem é obrigatória')
 ];
+
+// Middleware para garantir que o banco de dados esteja conectado
+app.use((req, res, next) => {
+  if (!db) {
+    return res.status(500).send('Banco de dados não está conectado.');
+  }
+  next();
+});
 
 // Rota principal
 app.get('/', (req, res) => {
@@ -98,7 +108,7 @@ app.post('/processa_telefone', (req, res) => {
 
 // Rotas API
 app.post('/submit_contact_form', contactFormValidation, async (req, res) => {
-  console.log('Requisição recebida em /api/submit_contact_form');
+  console.log('Requisição recebida em /submit_contact_form');
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -128,7 +138,7 @@ app.post('/submit_contact_form', contactFormValidation, async (req, res) => {
 });
 
 app.post('/submit_form', async (req, res) => {
-  console.log('Requisição recebida em /api/submit_form');
+  console.log('Requisição recebida em /submit_form');
 
   const { 
       nome, data_nascimento, cpf, contrato_social, telefone1, telefone2,
