@@ -97,7 +97,7 @@ app.post('/processa_telefone', (req, res) => {
 });
 
 // Rotas API
-app.post('/api/submit_contact_form', contactFormValidation, async (req, res) => {
+app.post('/submit_contact_form', contactFormValidation, async (req, res) => {
   console.log('Requisição recebida em /api/submit_contact_form');
 
   const errors = validationResult(req);
@@ -127,7 +127,7 @@ app.post('/api/submit_contact_form', contactFormValidation, async (req, res) => 
   }
 });
 
-app.post('/api/submit_form', async (req, res) => {
+app.post('/submit_form', async (req, res) => {
   console.log('Requisição recebida em /api/submit_form');
 
   const { 
