@@ -2,12 +2,21 @@ const express = require('express');
 const path = require('path');
 const helmet = require('helmet');
 const { check, validationResult } = require('express-validator');
-const { MongoClient } = require('mongodb');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 
 // Configuração do MongoDB
-const uri = 'mongodb+srv://jamefagregacoeseentregas:u3bFFsxmwLdwOuxo@infosjamef.p0kt5.mongodb.net/?retryWrites=true&w=majority&appName=InfosJamef';
-const client = new MongoClient(uri);
-const dbName = 'infosjamef';
+const uri = "mongodb+srv://jamefagregacoeseentregas:u3bFFsxmwLdwOuxo@infosjamef.p0kt5.mongodb.net/?retryWrites=true&w=majority&appName=InfosJamef";
+
+// Cria um cliente MongoClient com as opções de API estável
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
+
+const dbName = 'InfosJamef';
 let db;
 
 // Função para conectar ao MongoDB
@@ -18,6 +27,7 @@ async function connectToDatabase() {
     db = client.db(dbName);
   } catch (error) {
     console.error('Erro ao conectar ao MongoDB:', error);
+    process.exit(1); // Encerra o processo se não conseguir conectar
   }
 }
 
@@ -68,31 +78,27 @@ app.use((req, res, next) => {
   next();
 });
 
-// Rota principal
+// Rotas
 app.get('/', (req, res) => {
   console.log('Rota principal acessada');
   res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
-// Rota para a página de serviços
 app.get('/servicos.html', (req, res) => {
   console.log('Rota de serviços acessada');
   res.sendFile(path.join(__dirname, '../public', 'servicos.html'));
 });
 
-// Rota para a página de contato
 app.get('/contato.html', (req, res) => {
   console.log('Rota de contato acessada');
   res.sendFile(path.join(__dirname, '../public', 'contato.html'));
 });
 
-// Rota para o formulário dividido em três partes
 app.get('/formulario.html', (req, res) => {
   console.log('Rota do formulário acessada');
   res.sendFile(path.join(__dirname, '../public', 'formulario.html'));
 });
 
-// Rota para processar o número de telefone do footer
 app.post('/processa_telefone', (req, res) => {
   const { phone } = req.body;
 
@@ -106,7 +112,6 @@ app.post('/processa_telefone', (req, res) => {
   }
 });
 
-// Rotas API
 app.post('/submit_contact_form', contactFormValidation, async (req, res) => {
   console.log('Requisição recebida em /submit_contact_form');
 
