@@ -6,8 +6,8 @@ const { MongoClient } = require('mongodb');
 
 // Configuração do MongoDB
 const uri = 'mongodb+srv://jamefagregacoeseentregas:u3bFFsxmwLdwOuxo@infosjamef.p0kt5.mongodb.net/?retryWrites=true&w=majority&appName=InfosJamef'; // Substitua pela sua URI do MongoDB
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-const dbName = 'infosjamef';
+const client = new MongoClient(uri);
+const dbName = 'InfosJamef';
 let db;
 
 async function connectToDatabase() {
