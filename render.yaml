@@ -1,0 +1,12 @@
+version: 1
+services:
+  - type: web
+    name: my-express-app
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
+    branches:
+      production:
+        repo: https://github.com/tramposssss/render
+        branch: main

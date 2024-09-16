@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Entre em contato conosco para agregar seu veículo à Jamef Transportes. Oferecemos soluções logísticas eficientes e personalizadas.">
+    <link rel="icon" href="https://www.jamef.com.br/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <meta content="Contato | Jamef Transportes - Agregação de Veículos" property="og:title">
+    <meta name="twitter:title" content="Contato | Jamef Transportes - Agregação de Veículos">
+    <meta content="website" property="og:type">
+    <meta property="og:description" content="Entre em contato conosco para agregar seu veículo à Jamef Transportes. Oferecemos soluções logísticas eficientes e personalizadas.">
+    <meta name="twitter:description" content="Entre em contato conosco para agregar seu veículo à Jamef Transportes. Oferecemos soluções logísticas eficientes e personalizadas.">
+    <meta property="og:site_name" content="Jamef Transportes">
+    <meta name="keywords" content="transporte, logística, agregação de veículos, Jamef">
+    <meta content="https://www.jamef.com.br/img/og-image.jpg" property="og:image">
+    <meta content="https://www.jamef.com.br/img/og-image.jpg" name="twitter:image">
+    <meta content="Imagem de destaque" property="og:image:alt">
+    <meta content="Imagem de destaque" name="twitter:image:alt">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Formulário | Jamef Transportes</title>
+</head>
+
+    <body >
+        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top border-bottom">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="https://www.jamef.com.br/static/media/nova-logo-jamef.54dcc5ebdb68bf21cfb61523ac14bb84.svg" alt="Jamef Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" href="./index.html">Início</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" href="./servicos.html">Serviços</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-danger active" aria-current="page" href="./contato.html">Contato</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" href="./formulario.html">Formulário</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    
+        <main class="container my-4 pb-3" id="main-content">
+            <h1 class="pt-3" id="form-title">Formulário de Cadastro</h1>
+            <form action="/submit_form" method="POST" id="registration-form">
+                <!-- Parte 1: Dados Pessoais -->
+                <fieldset id="personal-info">
+                    <legend>Dados Pessoais</legend>
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome:</label>
+                        <input type="text" id="nome" name="nome" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="data_nascimento" class="form-label">Data de Nascimento:</label>
+                        <input type="date" id="data_nascimento" name="data_nascimento" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cpf" class="form-label">CPF:</label>
+                        <input type="text" id="cpf" name="cpf" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contrato_social" class="form-label">Contrato Social (Caso seja MEI):</label>
+                        <input type="text" id="contrato_social" name="contrato_social" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefone1" class="form-label">Telefone 1:</label>
+                        <input type="text" id="telefone1" name="telefone1" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefone2" class="form-label">Telefone 2:</label>
+                        <input type="text" id="telefone2" name="telefone2" class="form-control">
+                    </div>
+                </fieldset>
+    
+                <!-- Parte 2: Endereço -->
+                <fieldset id="address-info">
+                    <legend>Endereço</legend>
+                    <div class="mb-3">
+                        <label for="endereco" class="form-label">Endereço:</label>
+                        <input type="text" id="endereco" name="endereco" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="numero" class="form-label">Número:</label>
+                        <input type="text" id="numero" name="numero" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="bairro" class="form-label">Bairro:</label>
+                        <input type="text" id="bairro" name="bairro" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cidade" class="form-label">Cidade:</label>
+                        <input type="text" id="cidade" name="cidade" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="estado" class="form-label">Estado:</label>
+                        <input type="text" id="estado" name="estado" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cep" class="form-label">CEP:</label>
+                        <input type="text" id="cep" name="cep" class="form-control" required>
+                    </div>
+                </fieldset>
+    
+                <!-- Parte 3: Veículo e Habilitação -->
+                <fieldset id="vehicle-info">
+                    <legend>Veículo e Habilitação</legend>
+                    <div class="mb-3">
+                        <label for="categoria" class="form-label">Categoria:</label>
+                        <input type="text" id="categoria" name="categoria" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="marca_veiculo" class="form-label">Marca do Veículo:</label>
+                        <input type="text" id="marca_veiculo" name="marca_veiculo" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="modelo_veiculo" class="form-label">Modelo do Veículo:</label>
+                        <input type="text" id="modelo_veiculo" name="modelo_veiculo" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ano_veiculo" class="form-label">Ano do Veículo:</label>
+                        <input type="text" id="ano_veiculo" name="ano_veiculo" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="renavam" class="form-label">RENAVAM:</label>
+                        <input type="text" id="renavam" name="renavam" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="placa" class="form-label">Placa:</label>
+                        <input type="text" id="placa" name="placa" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="habilitacao" class="form-label">Carteira de Habilitação:</label>
+                        <input type="text" id="habilitacao" name="habilitacao" class="form-control" required>
+                    </div>
+                </fieldset>
+    
+                <button type="submit" class="btn btn-danger" id="submit-button">Enviar</button>
+            </form>
+        </main>
+    
+    <footer class="bg-white text-dark py-4 border-top">
+        <div class="container">
+            <div class="row">
+                <!-- Seção sobre a empresa -->
+                <div class="col-md-4">
+                    <h4>Sobre Nós</h4>
+                    <p>Somos uma empresa líder no setor de transporte, oferecendo soluções logísticas completas para uma vasta gama de necessidades.</p>
+                </div>
+    
+                <!-- Seção de contato -->
+                <div class="col-md-4">
+                    <h4>Contato</h4>
+                    <p><strong>Telefone:</strong> (61) 9846-7079</p>
+                    <p><strong>Email:</strong> <a href="mailto:contato@jamef.com.br" class="text-dark">contato@jamef.com.br</a></p>
+                    <p><strong>Endereço:</strong> Avenida Do Estado, 2000, B Retiro, São Paulo - SP, CEP 01108-000</p>
+                    <h6 class="mt-4">Siga-nos nas redes sociais:</h6>
+                    <div class="d-flex">
+                        <a href="https://www.facebook.com/jameftransportes" class="text-dark me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/jameftransportes" class="text-dark"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+    
+                <!-- Seção de solicitação e redes sociais -->
+                <div class="col-md-4">
+                    <h4>Solicite sua Agregação</h4>
+                    <p>Preencha o formulário abaixo para enviar sua solicitação. Nossa equipe entrará em contato com você o mais breve possível.</p>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Telefone:</span>
+                        <input type="text" class="form-control" id="footerPhone" aria-label="Telefone">
+                    </div>
+                    <button class="btn btn-danger" id="telButton" type="button">Enviar Solicitação</button>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Seção de direitos autorais -->
+        <div class="bg-light text-center py-2">
+            <p class="mb-0">&copy; 2024 Jamef Transportes. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    
+    <div id="floating-bubble">
+        <button class="btn btn-success" type="button" id="floatingButton">
+            <i class="bi bi-whatsapp"></i>
+        </button>
+    </div>
+    
+    <script src="./js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

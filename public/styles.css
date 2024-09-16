@@ -1,0 +1,404 @@
+/* Estilo do corpo */
+body {
+    font-family: Arial, sans-serif;
+    margin-top: 56px; /* Ajusta o espaço para o menu fixo */
+}
+
+/* Estilo da barra de navegação */
+.navbar {
+    background-color: #ffffff; /* Branco Jamef */
+    z-index: 1030; /* Garante que a barra de navegação esteja acima de outros elementos */
+}
+
+.navbar-brand img {
+    width: 200px; /* Largura do logo */
+}
+
+.navbar-nav .nav-link {
+    color: #d32f2f !important; /* Vermelho Jamef */
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+    text-decoration: underline; /* Adiciona sublinhado ao link ativo */
+}
+
+/* Estilo do botão de alternância (hambúrguer) */
+.custom-toggler .navbar-toggler-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"%3E%3Cpath stroke="%23d32f2f" stroke-width="2" d="M5 7h20M5 15h20M5 23h20"/%3E%3C/svg%3E');
+}
+
+.navbar-toggler {
+    border: 1px solid #d32f2f; /* Borda vermelha no botão */
+}
+
+/* Estilo da seção principal */
+.main-section {
+    position: relative;
+    color: white;
+    padding: 50px 15px;
+    overflow: hidden; /* Garante que o fundo não saia da seção */
+    background: url('https://www.jamef.com.br/static/media/bannerjamefemtodobrasil.972750463227d4bd50de.png') no-repeat center center; /* Substitua pela imagem da Jamef */
+    background-size: auto; /* Faz com que a imagem cubra a seção */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Overlay para melhorar a legibilidade do texto */
+.main-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Cor de sobreposição preta semi-transparente */
+    z-index: 0; /* Fica atrás do conteúdo */
+}
+
+/* Contêiner da seção principal */
+.main-section .container {
+    position: relative;
+    z-index: 1; /* Garante que o conteúdo fique acima da sobreposição */
+    background-color: rgba(0, 0, 0, 0.6); /* Adiciona um fundo semi-transparente para o conteúdo */
+    padding: 20px; /* Ajusta o padding conforme necessário */
+    border-radius: 10px; /* Adiciona bordas arredondadas ao fundo do conteúdo */
+    max-width: 900px; /* Limita a largura do contêiner */
+    width: 100%;
+}
+
+/* Estilo do título da seção */
+.main-section h1 {
+    color: #ffffff; /* Cor do texto do título */
+    font-size: 2.5rem; /* Tamanho do título */
+    margin-bottom: 20px; /* Espaço abaixo do título */
+}
+
+/* Estilo do texto à esquerda e à direita */
+.left-text, .right-text {
+    color: #ffffff; /* Cor do texto */
+    font-weight: 600; /* Ajusta o peso da fonte */
+    margin-bottom: 20px; /* Espaço abaixo do texto */
+}
+
+/* Estilo do botão "Fale Conosco" */
+.btn-fale-conosco {
+    background-color: #d32f2f; /* Vermelho Jamef */
+    border: 2px solid white;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.btn-fale-conosco:hover {
+    border-color: #d32f2f; /* Vermelho Jamef */
+    background-color: transparent;
+    color: #d32f2f; /* Vermelho Jamef */
+    text-decoration: none;
+}
+
+/* Estilo do texto à direita */
+.right-text {
+    color: #ffffff; /* Cor do texto */
+}
+
+/* Estilos para a segunda seção */
+.main-secundary-section {
+    background-color: #d32f2f; /* Vermelho Jamef */
+    color: #ffffff; /* Branco */
+    padding: 50px 15px;
+}
+
+.main-secundary-section h1 {
+    color: white;
+}
+
+.main-secundary-section h2, .main-secundary-section p, .main-secundary-section ol li {
+    color: #ffffff; /* Branco */
+}
+
+/* Estilo para imagens na segunda seção */
+.img-thumbnail {
+    background-color: transparent; /* Garante que o fundo seja transparente */
+    border: none; /* Remove a borda padrão */
+    box-shadow: none; /* Remove qualquer sombra padrão */
+    max-width: 100%; /* Faz com que a imagem não ultrapasse a largura do container */
+    height: auto; /* Mantém a proporção da imagem */
+    margin: 0 auto; /* Centraliza a imagem horizontalmente */
+    display: block; /* Garante que o margin auto funcione corretamente */
+}
+
+/* Estilo para o container das imagens */
+.d-flex.justify-content-center {
+    display: flex;
+    justify-content: center; /* Centraliza as imagens horizontalmente */
+    flex-wrap: wrap; /* Permite que as imagens se movam para a linha seguinte se necessário */
+}
+
+/* Responsividade para imagens na segunda seção */
+@media (max-width: 768px) {
+    .img-thumbnail {
+        max-width: 400px; /* Reduz a largura máxima em telas menores */
+    }
+}
+
+@media (max-width: 576px) {
+    .img-thumbnail {
+        max-width: 300px; /* Reduz ainda mais a largura máxima em telas menores */
+    }
+}
+
+/* Estilos para o footer */
+footer {
+    background-color: #ffffff; /* Branco Jamef */
+    color: #d32f2f; /* Vermelho Jamef */
+    padding: 30px 15px;
+}
+
+footer h4 {
+    margin-top: 0;
+}
+
+.footer-contact .form-control {
+    border-radius: 0;
+}
+
+.footer-contact .btn-primary {
+    background-color: #d32f2f; /* Vermelho Jamef */
+    border: none;
+    border-radius: 0;
+}
+
+/* Estilo do botão flutuante */
+#floating-bubble {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1020; /* Garante que o botão flutuante esteja acima de outros elementos, mas abaixo da barra de navegação */
+}
+
+#floatingButton {
+    background-color: #d32f2f; /* Vermelho Jamef */
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 37px;
+    color: white;
+    animation: zoom 2s ease-in-out infinite;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        width: 120px;
+    }
+
+    .main-section,
+    .main-secundary-section {
+        padding: 30px 10px;
+    }
+
+    #floatingButton {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-nav .nav-link {
+        font-size: 14px;
+    }
+
+    #floatingButton {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}
+
+/* Estilo específico para o botão "Saiba Mais" */
+#infoButton {
+    background-color: #ffffff; /* Vermelho Jamef */
+    border: 2px solid #d32f2f; /* Borda vermelha Jamef */
+    color: #ff0000; /* Cor do texto branca */
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 40px;
+    display: inline-block;
+    margin-top: 10px;
+    transition: all 0.3s ease; /* Suaviza a transição entre os estados */
+}
+
+#infoButton:hover,
+#infoButton:focus {
+    background-color: transparent; /* Fundo transparente */
+    border-color: #ffffff; /* Borda vermelha Jamef */
+    color: #ffffff; /* Vermelho Jamef */
+    text-decoration: none;
+}
+
+/* Estilo do botão de envio no rodapé da página de serviços */
+#telButton {
+    background-color: #d32f2f; /* Vermelho Jamef */
+    border: 2px solid transparent;
+    color: #ffffff; /* Branco */
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 40px;
+}
+
+#telButton:hover {
+    border-color: #d32f2f; /* Vermelho Jamef */
+    background-color: transparent;
+    color: #d32f2f; /* Vermelho Jamef */
+    text-decoration: none;
+}
+
+/* Estilo dos cards na página de serviços */
+.servicos-page .card {
+    background-color: #ffffff; /* Fundo branco dos cards */
+    color: #333333; /* Texto escuro nos cards */
+    height: 100%; /* Faz com que os cards se estendam completamente */
+    border: 1px solid #d32f2f; /* Borda vermelha Jamef */
+}
+
+/* Imagens dos cards na página de serviços */
+.servicos-page .card-img-top {
+    max-height: 200px; /* Altura máxima das imagens dos cards */
+    object-fit: cover; /* Faz com que as imagens se ajustem ao tamanho do card */
+}
+
+/* Títulos e textos dos cards na página de serviços */
+.servicos-page .card-title,
+.servicos-page .card-text {
+    color: #d32f2f; /* Vermelho Jamef */
+}
+
+/* Estilo específico para o botão "Enviar" no footer da página de serviços */
+.servicos-page #telButton {
+    background-color: #d32f2f; /* Vermelho Jamef */
+    border: 2px solid transparent;
+    color: #ffffff; /* Branco */
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.servicos-page #telButton:hover {
+    border-color: #d32f2f; /* Vermelho Jamef */
+    background-color: transparent;
+    color: #d32f2f; /* Vermelho Jamef */
+    text-decoration: none;
+}
+
+/* Estilo para o título */
+.servicos-page h1 {
+    font-size: 4rem; /* Tamanho maior para o título */
+    font-weight: bold; /* Deixa o título em negrito */
+    color: #d32f2f; /* Vermelho Jamef */
+}
+
+/* Estilo para o corpo do texto */
+.servicos-page p.lead {
+    font-size: 1rem; /* Tamanho padrão para o corpo do texto */
+    color: #333333; /* Texto escuro */
+}
+
+/* Estilos específicos para a página de contato */
+.contato-page {
+    background-color: #f5f5f5; /* Cor de fundo cinza claro */
+    padding: 30px 0; /* Espaçamento vertical */
+}
+
+.contato-page h1 {
+    font-size: 2.5rem; /* Tamanho maior para o título */
+    font-weight: bold; /* Título em negrito */
+    color: #d32f2f; /* Vermelho Jamef */
+}
+
+.contato-page .lead {
+    text-align: justify; /* Justifica o texto */
+    font-size: 1rem; /* Tamanho padrão para o corpo do texto */
+    color: #333333; /* Texto escuro */
+}
+
+.contato-page form {
+    background-color: #ffffff; /* Fundo branco para o formulário */
+    padding: 20px;
+    border-radius: 8px; /* Cantos arredondados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+.contato-page .form-control {
+    border-radius: 5px; /* Cantos arredondados para os inputs */
+}
+
+.contato-page .btn-primary {
+    background-color: #d32f2f; /* Vermelho Jamef */
+    border: none; /* Remove a borda padrão */
+}
+
+.contato-page .btn-primary:hover {
+    background-color: #c62828; /* Vermelho mais escuro no hover */
+}
+
+.contato-page h3 {
+    margin-top: 20px;
+}
+
+.contato-page p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+/* Estilo da navbar personalizada */
+.custom-navbar {
+    padding: 1rem 2rem; /* Ajuste o padding conforme necessário */
+}
+
+/* Ajuste o container fluido */
+.container-fluid {
+    max-width: 1200px; /* Ajuste a largura máxima do container se desejar */
+    margin: 0 auto; /* Centraliza o container */
+}
+
+/* Estilo para o card-body */
+.card-body {
+    text-align: center;
+}
+
+/* Define a animação fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Começa invisível */
+    }
+    to {
+        opacity: 1; /* Fica totalmente visível */
+    }
+}
+
+/* Aplica a animação aos elementos */
+.animated {
+    animation: fadeIn 2s ease-out forwards; /* Duração da animação e comportamento */
+}
+
+/* Define a animação zoom */
+@keyframes zoom {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+#floatingButton {
+    animation: zoom 2s ease-in-out infinite;
+}
