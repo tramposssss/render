@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             try {
-                const response = await fetch('/api/submit_contact_form', { // Verifique se o caminho está correto
+                const response = await fetch('/submit_contact_form', { // Verifique se o caminho está correto
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             try {
-                const response = await fetch('/api/submit_form', { // Verifique se o caminho está correto
+                const response = await fetch('/submit_form', { // Verifique se o caminho está correto
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
